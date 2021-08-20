@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Money Button Paywall</title>
+  <style>
+    body {
+      width: 50%;
+      margin: 10vh auto;
+      /* System default fonts */
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    }
+    code {
+      color: deeppink;
+      /* Baseline shift */
+      position: relative;
+      top: -0.05em;
+    }
+    pre {
+      color: lightseagreen;
+    }
+    blockquote {
+      background-color: #eee;
+      padding: 1em;
+      border-radius: 1em;
+      margin: 1em 0;
+    }
 
+    /* The CSS you'll need in your website */
+    #unlockable {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 5s;
+    }
+    #unlockable.unlocked {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+  <script>
+    /* The Javascript you'll need in your website */
+    function handleSuccessfulPayment (payment) {
+      unlockContent();
+    }
+    function handleFailedPayment (error) {
+      alert("Sorry, the payment did not process correctly.")
+    }
+    function unlockContent () {
+      document.getElementById("unlockable").classList.toggle("unlocked");
+    }
+  </script>
+</head>
+<body>
+
+<h1>Money Button Paywall test</h1>
+
+<!-- Free content -->
+<p>swipe the button to continue</em></p>
+
+<!-- Money Button -->
+<div class="money-button"
+  data-to="1vmP9Wz5K2nyUW3svkD1aCuccQdZ3Ntxz"
+  data-amount="1"
+  data-currency="USD"
+  data-label="Unlock"
+  data-client-identifier="7df43d613edf7a516089632bfdfd352a"
+  data-button-id="1539888464998"
+  data-button-data="{}"
+  data-type="buy"
+  data-on-payment="handleSuccessfulPayment"
+  data-on-error="handleFailedPayment"
+  data-dev-mode="false"
+></div>
+
+<!-- Hidden content -->
+<div id="unlockable">
+ You can submit your NFT by sharing the information in our telegram
+<a>https://t.me/joinchat/HDIzgaHNcNMyZGEx<a/>
+</div>
+
+<!-- Money Button script -->
+<script src="https://www.moneybutton.com/moneybutton.js"></script>
+
+</body>
+</html>
